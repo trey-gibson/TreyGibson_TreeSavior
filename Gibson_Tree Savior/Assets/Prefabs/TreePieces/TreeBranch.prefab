@@ -40,6 +40,8 @@ GameObject:
   - component: {fileID: 33068661067708570}
   - component: {fileID: 23552066775396322}
   - component: {fileID: 136816408183639730}
+  - component: {fileID: 114617172332127840}
+  - component: {fileID: 114079507606193628}
   m_Layer: 0
   m_Name: TreeBranch
   m_TagString: Untagged
@@ -67,8 +69,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803428600651422}
   m_LocalRotation: {x: 0.00000008146034, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.6, z: -0}
-  m_LocalScale: {x: 1.1999999, y: 0.5, z: 1.1999999}
+  m_LocalPosition: {x: -3.8952215, y: -5.41988, z: 2.196595}
+  m_LocalScale: {x: 2, y: 0.5, z: 2}
   m_Children:
   - {fileID: 4483562782989646}
   m_Father: {fileID: 0}
@@ -158,6 +160,31 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1294116380334182}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114079507606193628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1803428600651422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae1de539a41332c479f9d9c1b30e470f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestroyDelay: 7
+--- !u!114 &114617172332127840
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1803428600651422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9f9f7e4aed34241a4619601b6f13de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 1
+  RotationSpeed: 0
 --- !u!136 &136487259939433456
 CapsuleCollider:
   m_ObjectHideFlags: 1

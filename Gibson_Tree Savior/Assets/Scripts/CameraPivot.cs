@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class CameraPivot : MonoBehaviour
 {
-    public GameObject TargetRotateObject;
 
-    public Transform CameraPosition1;
-    public Transform CameraPosition2;
-
-    public Vector3 FrontSideRotation;
-    public Vector3 BackSideRotation;
-
+    public Transform TargetRotationTransform;
     public bool IsFront = true;
     // Transforms to act as start and end markers for the journey.
 
-    public Quaternion TargetRotation;
+    public Vector3 TargetEulerRotation;
     public float TurnSpeed;
     // Movement speed in units/sec.
     public float speed = 1.0F;
@@ -31,16 +25,31 @@ public class CameraPivot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TargetRotation == CameraPosition2.transform.rotation)
-        {
-            //TargetRotateObject.transform.position = CameraPosition2.transform.position;
-            TargetRotateObject.transform.rotation = Quaternion.Slerp(TargetRotateObject.transform.rotation, Quaternion.Euler(BackSideRotation), TurnSpeed * Time.deltaTime);
-        }
+        TargetRotationTransform.rotation = Quaternion.Slerp(TargetRotationTransform.rotation, Quaternion.Euler(TargetEulerRotation), TurnSpeed * Time.deltaTime);
+    }
 
-        if (TargetRotation == CameraPosition1.transform.rotation)
+    void OnTriggerEnter(Collider other)
+    {
+        if (IsFront == true)
         {
-            //TargetRotateObject.transform.position = CameraPosition1.transform.position;
-            TargetRotateObject.transform.rotation = Quaternion.Slerp(TargetRotateObject.transform.rotation, Quaternion.Euler(FrontSideRotation), TurnSpeed * Time.deltaTime);
+            if (other.tag == "Player")
+            {
+                Debug.Log("I was hit!");
+                //MainCamera.transform.position = CameraPosition2.transform.position;
+                //MainCamera.transform.rotation = CameraPosition2.transform.rotation;
+                TargetEulerRotation = new Vector3(transform.rotation.eulerAngles.x, 180, transform.rotation.eulerAngles.z);
+                IsFront = false;
+            }
+        }
+        else
+      if (IsFront == false)
+        {
+            if (other.tag == "Player")
+            {
+                Debug.Log("I was hit!");
+                TargetEulerRotation = new Vector3(transform.rotation.eulerAngles.x, 0, transform.rotation.eulerAngles.z);
+                IsFront = true;
+            }
         }
     }
 }

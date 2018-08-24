@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour {
     public float Total;
     public float Tick;
     public CameraShake cameraShake;
+    public Text scoreText;
     // Use this for initialization
     void Start () {
 		
@@ -31,6 +32,11 @@ public class PlayerController : MonoBehaviour {
         if (Tick >= 3)
         {
             HP3.enabled = false;
+            {
+                if (HP3.enabled == false)
+                { scoreText.fontSize = 150; }
+                
+            }
         }
 
         if (Input.GetKey(KeyCode.A))

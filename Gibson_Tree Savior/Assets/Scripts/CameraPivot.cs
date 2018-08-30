@@ -6,7 +6,7 @@ public class CameraPivot : MonoBehaviour
 {
 
     public Transform TargetRotationTransform;
-    public bool IsFront = true;
+    public bool IsLeft = true, IsRight = false;
     // Transforms to act as start and end markers for the journey.
 
     public Vector3 TargetEulerRotation;
@@ -30,26 +30,45 @@ public class CameraPivot : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (IsFront == true)
+        if (IsLeft == true && IsRight == false)
         {
             if (other.tag == "Player")
             {
                 Debug.Log("I was hit!");
                 //MainCamera.transform.position = CameraPosition2.transform.position;
                 //MainCamera.transform.rotation = CameraPosition2.transform.rotation;
-                TargetEulerRotation = new Vector3(transform.rotation.eulerAngles.x, 180, transform.rotation.eulerAngles.z);
-                IsFront = false;
+                TargetEulerRotation = new Vector3(transform.rotation.eulerAngles.x, -180, transform.rotation.eulerAngles.z);
+                IsLeft = false;
+                IsRight = true;
             }
+
         }
         else
-      if (IsFront == false)
+        if (IsLeft == false && IsRight == true)
         {
             if (other.tag == "Player")
             {
                 Debug.Log("I was hit!");
+                //MainCamera.transform.position = CameraPosition2.transform.position;
+                //MainCamera.transform.rotation = CameraPosition2.transform.rotation;
+                //StartCoroutine(CameraPivotDelay());
                 TargetEulerRotation = new Vector3(transform.rotation.eulerAngles.x, 0, transform.rotation.eulerAngles.z);
-                IsFront = true;
+                IsLeft = true;
+                IsRight = false;
+                Debug.Log("dude");
             }
         }
     }
+    /*public IEnumerator CameraPivotDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        CameraSpin();
+    }
+
+    public void CameraSpin()
+    {
+        TargetEulerRotation = new Vector3(transform.rotation.eulerAngles.x, -180, transform.rotation.eulerAngles.z);
+        IsLeft = true;
+        IsRight = false;
+    }*/
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraPivot : MonoBehaviour
+public class LeftBox : MonoBehaviour
 {
 
     public Transform TargetRotationTransform;
@@ -34,7 +34,7 @@ public class CameraPivot : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                Debug.Log("I was hit!");
+                Debug.Log("2!");
                 //MainCamera.transform.position = CameraPosition2.transform.position;
                 //MainCamera.transform.rotation = CameraPosition2.transform.rotation;
                 TargetEulerRotation = new Vector3(transform.rotation.eulerAngles.x, -180, transform.rotation.eulerAngles.z);

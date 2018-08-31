@@ -34,7 +34,10 @@ public class PlayerController : MonoBehaviour {
             HP3.enabled = false;
             {
                 if (HP3.enabled == false)
-                { scoreText.fontSize = 150; }
+                {
+                    scoreText.fontSize = 150;
+                    scoreText.rectTransform.position = new Vector3(0150.5f, 360f, 0f);
+                }
                 
             }
         }

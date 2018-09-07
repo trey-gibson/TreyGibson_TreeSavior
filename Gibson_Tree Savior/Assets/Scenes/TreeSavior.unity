@@ -186,10 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 359, y: 639}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -268,9 +268,11 @@ MonoBehaviour:
   PrefabsToSpawn:
   - {fileID: 1803428600651422, guid: 6922187ca70ac044690236acc6dce08a, type: 2}
   SpawnOffsets: []
-  SpawnDelay: 0.43
+  SpawnDelay: 0.45
   MoveSpeed: 2
-  RotationSpeed: 4
+  RotationSpeed: 7
+  acceleration: 0.1
+  LessDelay: 0.015
 --- !u!4 &126906605
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,11 +1007,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1460420587}
-  RotationLeftValue: {x: 0, y: 0, z: 300}
-  RotationRightValue: {x: 0, y: 0, z: -300}
+  RotationLeftValue: {x: 0, y: 0, z: 150}
+  RotationRightValue: {x: 0, y: 0, z: -150}
   HP1: {fileID: 2050389796}
   HP2: {fileID: 358749513}
   HP3: {fileID: 960598618}
+  Dead: 0
   Total: 0
   Tick: 0
   cameraShake: {fileID: 0}
@@ -1179,6 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b726f62196c9fe48851b5fd2d056728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PC: {fileID: 1460420588}
   scoreText: {fileID: 1580736153}
   time: 0
   score: 0

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
+    public PlayerController PC;
     public Text scoreText;
     public int time;
     public float score;
@@ -18,7 +19,11 @@ public class Score : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        score += Time.deltaTime*2;
+        if(PC.Dead == false)
+        {
+            score += Time.deltaTime*2;
+        }
+        
      
 
         /*{

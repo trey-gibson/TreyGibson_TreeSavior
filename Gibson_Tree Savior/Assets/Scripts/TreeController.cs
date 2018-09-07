@@ -11,6 +11,8 @@ public class TreeController : MonoBehaviour {
     public float SpawnDelay = 0.1f;
     public float MoveSpeed = 1f;
     public float RotationSpeed = 1f;
+    public float acceleration;
+    public float LessDelay;
 
     private void Start()
     {
@@ -45,5 +47,9 @@ public class TreeController : MonoBehaviour {
         _treeComponent.RotationSpeed = RotationSpeed;
 
     }
-
+    private void Update()
+    {
+        MoveSpeed += Time.deltaTime * acceleration;
+        SpawnDelay -= Time.deltaTime * LessDelay;
+    }
 }

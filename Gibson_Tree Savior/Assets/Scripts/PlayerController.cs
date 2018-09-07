@@ -10,10 +10,12 @@ public class PlayerController : MonoBehaviour {
     public Image HP1;
     public Image HP2;
     public Image HP3;
+    public bool Dead;
     public float Total;
     public float Tick;
     public CameraShake cameraShake;
     public Text scoreText;
+    
     // Use this for initialization
     void Start () {
 		
@@ -36,7 +38,8 @@ public class PlayerController : MonoBehaviour {
                 if (HP3.enabled == false)
                 {
                     scoreText.fontSize = 150;
-                    scoreText.rectTransform.position = new Vector3(0150.5f, 360f, 0f);
+                    scoreText.rectTransform.position = new Vector3(150.5f, 360f, 0f);
+                    Dead = true;
                 }
                 
             }

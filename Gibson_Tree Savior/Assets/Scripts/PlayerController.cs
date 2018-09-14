@@ -14,15 +14,40 @@ public class PlayerController : MonoBehaviour {
     public float Total;
     public float Tick;
     public CameraShake cameraShake;
-    public Text scoreText;
-    
+    public Text scoreText,finalText;
+    public Texture HitYou;
+    public bool DisplayHitYou = false;
+    public RawImage HitYouRef;
+    public float Delay;
+    Color HitYouAlphaREF;
+    bool doOnce,doOnce2,doOnce3;
     // Use this for initialization
     void Start () {
-		
+        HitYouRef.enabled = false;
+        finalText.enabled = false;
 	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Update () {
+        //HitYouRef.color = HitYouAlphaREF;
+
+        if (HP1.enabled == false&& doOnce == false)
+        {
+            StartCoroutine(HealthDelay());
+            doOnce = true;
+        }
+
+        if (HP2.enabled == false && doOnce2 == false)
+        {
+            StartCoroutine(HealthDelay());
+            doOnce2 = true;
+        }
+
+        if (HP3.enabled == false && doOnce3 == false)
+        {
+            StartCoroutine(HealthDelay());
+            doOnce3 = true;
+        }
+
+
         if (Tick >= 1)
         {
             HP1.enabled = false;
@@ -40,6 +65,7 @@ public class PlayerController : MonoBehaviour {
                     scoreText.fontSize = 150;
                     scoreText.rectTransform.position = new Vector3(150.5f, 360f, 0f);
                     Dead = true;
+                    finalText.enabled = true;
                 }
                 
             }
@@ -67,5 +93,18 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(cameraShake.Shake(.15f, .4f));
         }
             
+    }
+
+
+
+
+    IEnumerator HealthDelay()
+    {
+        HitYouRef.enabled = true;
+        yield return new  WaitForSecondsRealtime(Delay);
+        HitYouRef.enabled = false;
+        StopAllCoroutines();
+
+
     }
 }

@@ -49,7 +49,10 @@ public class TreeController : MonoBehaviour {
     }
     private void Update()
     {
-        MoveSpeed += Time.deltaTime * acceleration;
-        SpawnDelay -= Time.deltaTime * LessDelay;
+        //MoveSpeed += Time.deltaTime * acceleration;
+        //SpawnDelay -= Time.deltaTime * LessDelay;
+        MoveSpeed = Mathf.Clamp((MoveSpeed + (1.1f * (Time.deltaTime * acceleration))), 2, 7);
+        SpawnDelay = Mathf.Clamp((SpawnDelay - (Time.deltaTime * LessDelay)), 0.095f, 7);
+        //MoveSpeed = Mathf.Clamp((Time.deltaTime * LessDelay), 1, 3);
     }
 }

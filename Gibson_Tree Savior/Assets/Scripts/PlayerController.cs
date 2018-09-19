@@ -21,11 +21,27 @@ public class PlayerController : MonoBehaviour {
     public float Delay;
     Color HitYouAlphaREF;
     bool doOnce,doOnce2,doOnce3;
+    public Text highScore;
+
     // Use this for initialization
     void Start () {
         HitYouRef.enabled = false;
         finalText.enabled = false;
+
+        highScore.text = PlayerPrefs.GetInt("highScore", scoreText).ToString(); 
+
 	}
+
+    public void highScores()
+    {
+        float number = Random.Range(1, Mathf.Infinity);
+        highScore.text = number.ToString();
+        if (number > PlayerPrefs.GetFloat("highScore", 0)) 
+        {
+            PlayerPrefs.SetFloat("highScore", scoreText);
+            highScore.text = number.ToString();
+        }
+    }
     void Update () {
         //HitYouRef.color = HitYouAlphaREF;
 

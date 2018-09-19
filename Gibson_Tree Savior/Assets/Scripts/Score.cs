@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
         {
             score += Time.deltaTime*2;
         }
-        
+       
      
 
         /*{

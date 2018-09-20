@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour {
         HitYouRef.enabled = false;
         finalText.enabled = false;
 
-        highScore.text = PlayerPrefs.GetInt("highScore", scoreText).ToString(); 
+        //highScore.text = PlayerPrefs.GetInt("highScore", scoreText).ToString(); 
 
 	}
 
@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour {
         highScore.text = number.ToString();
         if (number > PlayerPrefs.GetFloat("highScore", 0)) 
         {
-            PlayerPrefs.SetFloat("highScore", scoreText);
+           // PlayerPrefs.SetFloat("highScore", scoreText);
             highScore.text = number.ToString();
         }
     }

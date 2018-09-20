@@ -13,6 +13,7 @@ public class TreeController : MonoBehaviour {
     public float RotationSpeed = 1f;
     public float acceleration;
     public float LessDelay;
+    public List<Transform> AcornList;
 
     private void Start()
     {

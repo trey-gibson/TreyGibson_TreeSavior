@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Acorn : MonoBehaviour {
     public TreeController TC;
-    public GameObject Acorns;
+    public GameObject[] Acorns;
     public Vector3 spawnValues;
     public float spawnWait;
     public float spawnMostWait;
@@ -16,6 +16,8 @@ public class Acorn : MonoBehaviour {
     public float minSpawnValue;
     int randAcorn;
 
+    private float _highScore;
+
     private void Awake()
     {
         
@@ -24,6 +26,20 @@ public class Acorn : MonoBehaviour {
     {
         StartCoroutine(WaitSpawner());
 	}
+
+    void SaveHighScore()
+    {
+
+       // PlayerPrefs.SetFloat("Name You Want To Use", _highScore);
+
+    }
+
+   // void GetHighScore()
+    //{
+
+      //  _highScore = PlayerPrefs.GetFloat("Name You Want To Use");
+
+    //}
 	
 
 	void Update ()
@@ -39,13 +55,14 @@ public class Acorn : MonoBehaviour {
 
         while (!stop)
         {
-            //randAcorn = Random.Range(0, 9);
+            randAcorn = Random.Range(0, 9);
             //original
-            //Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), Random.Range(-spawnValues.z, spawnValues.z));
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), Random.Range(-spawnValues.y, spawnValues.y), Random.Range(-spawnValues.z, spawnValues.z));
             //test
-            Transform spawnPosition = TC.AcornList[Random.Range(1, TC.AcornList.Count)];
-                //new Vector3(Random.Range(minSpawnValue, maxSpawnValue), Random.Range(-spawnValues.y, spawnValues.y), Random.Range(minSpawnValue, maxSpawnValue));
-            Instantiate(Acorns, spawnPosition.position, gameObject.transform.rotation); //Acorns[randAcorn] +transform.TransformPoint(0, 0, 0)
+            //Transform spawnPosition = TC.AcornList[Random.Range(1, TC.AcornList.Count)];
+            //new Vector3(Random.Range(minSpawnValue, maxSpawnValue), Random.Range(-spawnValues.y, spawnValues.y), Random.Range(minSpawnValue, maxSpawnValue));
+            //Instantiate(Acorns[randAcorn], spawnPosition.position, gameObject.transform.rotation);
+            //Acorns[randAcorn] + transform.TransformPoint(0, 0, 0)
 
             yield return new WaitForSeconds(spawnWait);
         }

@@ -21,30 +21,39 @@ public class PlayerController : MonoBehaviour {
     public float Delay;
     Color HitYouAlphaREF;
     bool doOnce,doOnce2,doOnce3;
-    public Text highScore;
+    public Text highScoreText;
+    public bool highScoreBeat;
+    public GameObject scoreRef;
 
     // Use this for initialization
     void Start () {
         HitYouRef.enabled = false;
         finalText.enabled = false;
 
-        //highScore.text = PlayerPrefs.GetInt("highScore", scoreText).ToString(); 
+        highScoreText.text = PlayerPrefs.GetInt("highScore").ToString(); 
 
 	}
 
     public void highScores()
     {
         float number = Random.Range(1, Mathf.Infinity);
-        highScore.text = number.ToString();
-        if (number > PlayerPrefs.GetFloat("highScore", 0)) 
+        highScoreText.text = number.ToString();
+        if (number > PlayerPrefs.GetInt("highScore")) 
         {
            // PlayerPrefs.SetFloat("highScore", scoreText);
-            highScore.text = number.ToString();
+            highScoreText.text = number.ToString();
+            highScoreBeat = true;
         }
     }
     void Update () {
         //HitYouRef.color = HitYouAlphaREF;
-
+        Total = scoreRef.GetComponent<Score>().score;
+        if (Total > PlayerPrefs.GetInt("highScore"))
+        {
+            // PlayerPrefs.SetFloat("highScore", scoreText);
+            highScoreText.text = Total.ToString();
+            highScoreBeat = true;
+        }
         if (HP1.enabled == false&& doOnce == false)
         {
             StartCoroutine(HealthDelay());
@@ -82,6 +91,10 @@ public class PlayerController : MonoBehaviour {
                     scoreText.rectTransform.position = new Vector3(150.5f, 360f, 0f);
                     Dead = true;
                     finalText.enabled = true;
+                    if (highScoreBeat == true)
+                    {
+                        PlayerPrefs.SetFloat("highScore", scoreRef.GetComponent<Score>().score);
+                    }
                 }
                 
             }
